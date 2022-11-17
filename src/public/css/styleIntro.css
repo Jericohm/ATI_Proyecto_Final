@@ -1,0 +1,32 @@
+*{
+    margin: 0;    
+    padding: 0;
+    box-sizing: border-box;        
+    font-family: 'Arial Narrow';    
+    text-align: justify;
+}
+body{
+    background-color: #6054F7;
+}
+h1{
+    margin:0;
+    padding: 0;    
+    color: rgb(20, 20, 20);
+    border-color: black;
+}
+h2{
+    margin:0;
+    padding: 0;
+    color:rgb(243, 239, 239);
+}
+h3{
+    margin:0;
+    padding: 0;
+    color: rgb(23, 23, 24);
+    border-color: black;
+}
+h4{
+    margin:0;
+    padding: 0;
+    color:rgb(247, 242, 242);
+}
