@@ -20,12 +20,15 @@ body {
 }
 
 body {
+
   align-items: center;
   padding-bottom: 40px;
   background-color: #F2F2F2;
   border-color: #a60e23;
 }
-
+.container {
+  max-width: 960;
+}
 
 .form-signin {
   max-width: 400px;
