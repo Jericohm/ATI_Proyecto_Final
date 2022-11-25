@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Directivas Docker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body style="background-color:#0db7ed;">
+    <div class="container-fluid bg-dark py-4">
+      <div class="container text-white">
+        <h1 align="center" class="display-4"><b>Directivas Docker</b></h1>
+      </div>
+
+    </div>
+    <div class="container py-5 shadow-lg p-3 mb-5  rounded">
+
+
+        <p class="lead"><b>Un archivo Dockerfile es un archivo en formato de texto que contiene instrucciones dirigidas al Docker Daemon para la construcción personalizada de una nueva imagen, una imagen que cubra las necesidades específicas para un desarrollador. A estos comandos también se les conoce como directivas docker. La escritura de las directivas no distingue entre mayúsculas y minúsulas se recomienda por buena práctica escribirla en mayúsculas. Esto mejorará el mantenimiento de tus archivos Dockerfile.</b></p>
+        <h1>Directiva FROM</h1>
+        <p class="lead"><b>La directiva FROM especifica cuál será la imagen base desde la cual se creará la nueva. Normalmente esta imagen base es tomada del Docker registry oficial(hub.docker.com), sin embargo se puede usar una imagen propiedad del usuarii almacenada en un registro local o el de una organización. La sintaxis para esta directiva que incluye la especificación del tag es: FROM <nombre de laimagen base>:<tag>, si el tag no es establecido por defecto se establece el valor latest.</b></p>
+        <h1>Directiva LABEL</h1>
+        <p class="lead"><b>Esta directiva está orientada a agregar metadatos a la imagen con el objetivo de organizar las imágenes. Estos metadatos serán almacenados en la imagen por medio de un par llave/valor con la sintaxis LABEL <llave>=<valor>. Por ejemplo si queremos agregar el metadato para calificar la versión de la imagen se haría de la forma: LABEL version=0.0.1.</b></p>
+        <h1>Directiva RUN</h1>
+        <p class="lead"><b>La instrucción RUN especifica los comandos que se ejecutarán y se capturarán en la nueva imagen del contenedor. Estos comandos pueden incluir elementos como la instalación de software, la creación de archivos y directorios y la creación de la configuración del entorno.</b></p>
+        <h1>Directiva CMD</h1>
+        <p class="lead"><b>La instrucción CMD establece que el comando predeterminado se ejecutará al implementar una instancia de la imagen del contenedor. Por ejemplo, si el contenedor va a hospedar un servidor web NGINX, CMD puede incluir instrucciones para iniciar el servidor web con un comando como nginx.exe. Si se especifican varias instrucciones CMD en un archivo Dockerfile, solo se evalúa la última.</b></p>
+        <h1>Directiva ENTRYPOINT</h1>
+        <p class="lead"><b>Se utiliza para ejecutar un comando por defecto al correr un contenedor, pero no está pensado para que se le pasen argumentos al correr el contenedor. La idea es utilizar entrypoint como si fuera un ejecutable y ejecute un comando por defecto al iniciar el contendor.</b></p>
+        <h1>Directiva ADD</h1>
+        <p class="lead"><b>Su función básica es copiar los sistemas de archivos en el contenedor de destino del sistema de archivos del sistema de origen ingresando dos parámetros, el origen y el destino. Si la fuente es una URL, el contenido de la URL se descargará y se copiará en el contenedor.</b></p>
+        <h1>Directiva COPY</h1>
+        <p class="lead"><b>Copia archivos y directorios en el sistema de archivos del contenedor. Los archivos y los directorios deben encontrarse en una ruta de acceso relativa al archivo Dockerfile.</b></p>
+        <h1>Directiva WORKDIR</h1>
+        <p class="lead"><b>Se usa para configurar el directorio de trabajo del contenedor, después de ejecutar esta directiva todos los comandos se ejecutarán con la ruta de trabajo establecida a la ruta proporcionada.</b></p>
+  </div>
+
+
+</main>
+
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <a href={{regr}} >Regresar</a>
+    <span class="text-muted">Conceptos Docker</span>
+  </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Carter One', cursive;
+}
+
+body{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #384d54;    
+}
+
+.card{
+    position: relative;
+    width: 310px;
+    height: 400px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.card:hover{
+    box-shadow: 0 5px 15px rgba(3, 89, 92, .5);
+    transform: translateY(-15px);
+
+}
+
+.card .head{
+    height: 125px;
+    width: 100%;
+    position: relative;
+}
+
+.card .head .circle{
+    position: absolute;
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    background: #4055a8;
+    bottom: 0;
+
+}
+
+.card .head .img{
+    width: 150px;
+    height: 150px;
+    position:  absolute;
+    background: #fff;
+    padding: 5px;
+    border-radius: 50%;
+    bottom: -30%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.card .head .img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card .description{
+    height: 220px;
+    padding: 40px 20px 20px 20px;
+    border-bottom: solid 1px rgba(6,74,76,.18);
+    text-align:justify;
+}
+
+.card .description h4{
+    color: #41177c;
+}
+
+.card .description h5{
+    color: #492e8e;
+}
+
+.card .description p{
+    margin-top: 4px;
+    font-size: 12px;
+}
+
+.card .contact{
+    width: 100%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card .contact a{
+    text-decoration: none;
+    color: #fff;
+    background: #322985;
+    padding: 5px 20px;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.card .contact a:hover{
+    background: #4a1c75;
+}
