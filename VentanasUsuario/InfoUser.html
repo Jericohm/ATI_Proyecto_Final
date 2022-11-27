@@ -95,118 +95,44 @@
 <div class="container-fluid">
  <main>
    <div class="py-0">
-     <img class="d-block mx-auto mb-4 my-8 " src="../CSSUsuarios/PikaS.png" alt="" width="150" height="150">
+     <img class="d-block mx-auto mb-4 my-8 " src="../CSSUsuarios/TrainerPoke.png" alt="" width="270" height="250">
    </div>
 
-     <div class="form-signin w-100 m-auto">
-       <h4 class="mb-3">Registrar Pokemon</h4>
+     <div class="form-signin2 w-100 m-auto">
+       <h4 class="mb-3">Sobre mi...</h4>
        <form class="needs-validation" novalidate>
          <div class="mb-3">
-           <label for="formFile" class="form-label">Carga la Imagen</label>
+           <label for="formFile" class="form-label">Carga Imagen de perfil</label>
            <input class="form-control" type="file" id="formFile">
          </div>
          <div class="row g-2">
-
-             <label for="address2" class="form-label">Nombre</label>
-             <input type="text" class="form-control" id="address2" placeholder="Pikachu">
-
-              <hr class="my-1">
-           <div class="input-group input-group-sm mb-3">
-             <span class="input-group-text" id="inputGroup-sizing-sm">PS</span>
-             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+           <div class="input-group">
+             <span class="input-group-text">Acerca de mi</span>
+             <textarea class="form-control" aria-label="With textarea"></textarea>
            </div>
+          <hr class="my-1">
            <div class="input-group input-group-sm mb-3">
-             <span class="input-group-text" id="inputGroup-sizing-sm">Ataque</span>
+             <span class="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
            </div>
            <div class="input-group input-group-sm mb-3">
-             <span class="input-group-text" id="inputGroup-sizing-sm">Defensa</span>
+             <span class="input-group-text" id="inputGroup-sizing-sm">Usuario</span>
              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
            </div>
            <div class="input-group input-group-sm mb-3">
-             <span class="input-group-text" id="inputGroup-sizing-sm">AtaqueEsp</span>
+             <span class="input-group-text" id="inputGroup-sizing-sm">Correo</span>
              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
            </div>
            <div class="input-group input-group-sm mb-3">
-             <span class="input-group-text" id="inputGroup-sizing-sm">DefensaEsp</span>
+             <span class="input-group-text" id="inputGroup-sizing-sm">Contraseña</span>
              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
            </div>
-           <div class="input-group input-group-sm mb-1">
-             <span class="input-group-text" id="inputGroup-sizing-sm">Velocidad</span>
-             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-           </div>
-
-
-
-             <label for="country" class="form-label">Tipo</label>
-             <select class="form-select" id="country" required>
-               <option value="">Fuego</option>
-               <option>Electrico</option>
-               <option>Electrico</option>
-               <option>Acero</option>
-               <option>Tierra</option>
-               <option>Roca</option>
-               <option>Agua</option>
-               <option>Fuego</option>
-               <option>Planta</option>
-               <option>Veneno</option>
-               <option>Fantasma</option>
-               <option>Hielo</option>
-               <option>Lucha</option>
-               <option>Volador</option>
-               <option>Normal</option>
-               <option>Bicho</option>
-               <option>Dragon</option>
-               <option>Hada</option>
-               <option>Psiquico</option>
-
-             </select>
-             <div class="invalid-feedback">
-               Ingresa un tipo.
-             </div>
-
-             <label for="state" class="form-label">Naturaleza</label>
-             <select class="form-select" id="state" required>
-               <option value="">Afable</option>
-               <option>Furioso</option>
-               <option>Fuerte</option>
-               <option>Osado</option>
-               <option>Miedoso</option>
-               <option>Sereno</option>
-               <option>Docil</option>
-               <option>Horaño</option>
-               <option>Amable</option>
-               <option>Audaz</option>
-               <option>Serio</option>
-               <option>Placido</option>
-               <option>Grosero</option>
-               <option>Timido</option>
-               <option>Flojo</option>
-               <option>Alocado</option>
-               <option>Firme</option>
-             </select>
-             <div class="invalid-feedback">
-               Ingresa una naturaleza
-             </div>
-
-         </div>
-
-         <hr class="my-4">
-         <div class="form-check form-switch">
-           <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-           <label class="form-check-label" for="flexSwitchCheckDefault">Evento</label>
-         </div>
-         <div class="form-check form-switch">
-           <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-           <label class="form-check-label" for="flexSwitchCheckDefault">Codigo Canjeable</label>
-         </div>
-         <div class="form-check form-switch">
-           <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-           <label class="form-check-label" for="flexSwitchCheckDefault">Promoción</label>
          </div>
          <hr class="my-4">
-         <button class="w-100 btn btn-primary btn-lg" type="submit">Registrar Pokemon</button>
-          <hr class="my-10">
+        <button type="button" class="btn btn-primary btn-lg">Guardar</button>
+        <button type="button" class="btn btn-secondary btn-lg">Cerrar Sesion</button>
+        <hr class="my-40">
+        <hr class="my-10">
        </form>
      </div>
    </div>
