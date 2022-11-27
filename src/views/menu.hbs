@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Inicio de sesión</title>
+    <title>Signin Template · Bootstrap v5.2</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
@@ -54,7 +54,7 @@
         <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
       </a>
       <ul class="dropdown-menu text-small shadow">
-        <li><a class="dropdown-item" href="/index.html">Iniciar Sesion</a></li>
+        <li><a class="dropdown-item" href="#">Iniciar Sesion</a></li>
         <li><a class="dropdown-item" href="#">Registarse</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="#">Salir</a></li>
@@ -66,9 +66,12 @@
 </main>
 <main class="form-signin w-100 m-auto">
 
-    <div class="d-grid gap-2 col-22 mx-auto">
-  <button class="w-100 btn btn-outline-danger" onclick="window.location.href='./Registro.html';">Registrarse</button>
-  <button class="w-100 btn btn-outline-danger" type="submit">Iniciar Sesión</button>
+<div class="d-grid gap-2 col-22 mx-auto">
+  <button class="w-100 btn btn-outline-danger" type="button" onclick="location.href='{{regr}}';">
+    Registrarse</button>
+
+  <button class="w-100 btn btn-outline-danger" type="button" onclick="location.href='{{regr1}}';">
+    Iniciar Sesión</button>
   <button class="w-100 btn btn-outline-danger" type="submit">Recuperar contraseña</button>
 </div>
 

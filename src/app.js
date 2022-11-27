@@ -17,6 +17,8 @@ var usersRouter = require('./routes/users');
 var dockerRouter=require('./routes/docker');
 var datosRouter = require('./routes/datos');
 var infoUser = require('./routes/infoUsers');
+var registroUsuario = require('./routes/registro');
+var iniciarSesion = require('./routes/iniciarSesion');
 
 
 var app = express();
@@ -36,6 +38,8 @@ app.use('/users', usersRouter);
 app.use('/docker',dockerRouter);
 app.use('/datos', datosRouter);
 app.use('/infoUser', infoUser);
+app.use('/registro', registroUsuario);
+app.use('/inicioSesion', iniciarSesion);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
