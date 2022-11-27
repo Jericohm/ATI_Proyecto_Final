@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 //GET home page. 
 
 router.get('/', function(req, res, next) {
-  res.render('menu',{logo:'Logo.jpg',regr:'/registro',regr1:'/inicioSesion',regr2:'/datos'});
+  res.render('menu',{logo:'Logo.jpg',regr:'/registro',regr1:'/inicioSesion',regr2:'/recupera'});
 });
 
 

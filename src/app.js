@@ -19,6 +19,7 @@ var datosRouter = require('./routes/datos');
 var infoUser = require('./routes/infoUsers');
 var registroUsuario = require('./routes/registro');
 var iniciarSesion = require('./routes/iniciarSesion');
+var recuperaContra = require('./routes/recuperar');
 
 
 var app = express();
@@ -40,6 +41,7 @@ app.use('/datos', datosRouter);
 app.use('/infoUser', infoUser);
 app.use('/registro', registroUsuario);
 app.use('/inicioSesion', iniciarSesion);
+app.use('/recupera', recuperaContra);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -23,7 +23,8 @@ var usuarioSchema = Schema({
   id: Number,
   nombre: String,
   password: String,
-  correo: String
+  correo: String,
+  admin: Number
 });
 
 const solicitaUsuario = mongoose.model('usuario',usuarioSchema);

@@ -32,7 +32,8 @@ router.post('/', (req, res, next)=>{
     id: req.body.id,
     nombre: req.body.nombre,
     password: req.body.password,
-    correo: req.body.correo
+    correo: req.body.correo,
+    admin: req.body.admin
   });
 
   
