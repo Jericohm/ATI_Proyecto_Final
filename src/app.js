@@ -1,9 +1,15 @@
 var createError = require('http-errors');
 var express = require('express');
+var app = express();
+
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var flash = require('connect-flash');
+var bodyParser = require('body-parser');
+var session = require('express-session');
 
 mongoose.connect('mongodb+srv://jericohm:12345@cluster1.zhnf0.mongodb.net/database?retryWrites=true&w=majority',{
   useNewUrlParser: true
@@ -11,18 +17,20 @@ mongoose.connect('mongodb+srv://jericohm:12345@cluster1.zhnf0.mongodb.net/databa
   console.log("Conectado a MongoDB")
 });
 
+require('./config/passport')(passport); // Se solicita lo necesario para los login
 
+/*
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var dockerRouter=require('./routes/docker');
+var dockerRouter = require('./routes/docker');
 var datosRouter = require('./routes/datos');
 var infoUser = require('./routes/infoUsers');
 var registroUsuario = require('./routes/registro');
 var iniciarSesion = require('./routes/iniciarSesion');
 var recuperaContra = require('./routes/recuperar');
+*/
 
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,8 +40,22 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: 'proyectoFinalATI',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+//rutas
+require('./routes/rutas')(app, passport);
+
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
+
+/*
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/docker',dockerRouter);
@@ -42,6 +64,8 @@ app.use('/infoUser', infoUser);
 app.use('/registro', registroUsuario);
 app.use('/inicioSesion', iniciarSesion);
 app.use('/recupera', recuperaContra);
+*/
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
