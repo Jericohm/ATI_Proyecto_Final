@@ -26,7 +26,7 @@ const usuarioSchema = new mongoose.Schema({
     //id: Number,
     //nombre: String,
     password: String,
-    correo: String
+    email: String
     //admin: Number
   } 
 });
