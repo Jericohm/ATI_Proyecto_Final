@@ -19,19 +19,19 @@ var GameSchema = Schema({
     promo: Number
   });
 
-const solicitaInfo = mongoose.model('informacion',GameSchema);
+//const solicitaInfo = mongoose.model('informacion',GameSchema);
 
 const usuarioSchema = new mongoose.Schema({
   local:{
-    id: Number,
-    nombre: String,
+    //id: Number,
+    //nombre: String,
     password: String,
-    correo: String,
-    admin: Number
+    correo: String
+    //admin: Number
   } 
 });
 
-const solicitaUsuario = mongoose.model('usuario',usuarioSchema); // Podría dar problemas
+//const solicitaUsuario = mongoose.model('usuario',usuarioSchema); // Podría dar problemas
 
 usuarioSchema.methods.generateHash = function (password){
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
@@ -41,10 +41,11 @@ usuarioSchema.methods.validatePassword = function (password){
   return bcrypt.compareSync(password, this.local.password);
 };
 
+/*
 module.exports = {
   solicitaInfo: solicitaInfo,
   solicitaUsuario: solicitaUsuario
-}
+}*/
 
-//module.exports = mongoose.model('informacion',GameSchema);
+module.exports = mongoose.model('informacion',usuarioSchema);
 

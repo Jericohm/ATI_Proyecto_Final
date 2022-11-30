@@ -11,11 +11,20 @@ var flash = require('connect-flash');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
+// ANTIGUA CONEXIÓN A MONGODB
 mongoose.connect('mongodb+srv://jericohm:12345@cluster1.zhnf0.mongodb.net/database?retryWrites=true&w=majority',{
   useNewUrlParser: true
 }).then(()=>{
   console.log("Conectado a MongoDB")
 });
+
+const { url } = require('./config/database');
+/*
+mongoose.connect(url,{
+  //useMongoClient: true
+});*/
+
+//app.set('port', process.env.PORT || 3000);
 
 require('./config/passport')(passport); // Se solicita lo necesario para los login
 
@@ -81,5 +90,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+/*
+app.listen(app.get('port'), () => {
+  console.log('Servidor en puerto', app.get('port'));
+});*/
+
 
 module.exports = app;

@@ -85,8 +85,8 @@
         <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
       </a>
       <ul class="dropdown-menu text-small shadow">
-        <li><a class="dropdown-item" href={{regr1}}>Iniciar Sesion</a></li>
-        <li><a class="dropdown-item" href={{regr}}>Registarse</a></li>
+        <li><a class="dropdown-item" href="/inicioSesion">Iniciar Sesion</a></li>
+        <li><a class="dropdown-item" href="/Registro">Registarse</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="#">Salir</a></li>
       </ul>
@@ -97,16 +97,16 @@
 </main>
 <main class="form-signin w-100 m-auto">
 
-  <form>
+  <form action="/login" method="post">
     <img class="mb-4" src="PrinPoke.png" alt="" width="200" height="200">
     <h1 class="h3 mb-3 fw-normal">Iniciar Sesion</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="email" class="form-control" name="email" placeholder="name@example.com">
       <label for="floatingInput">Ingresar Correo</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" name="password" placeholder="Password">
       <label for="floatingPassword">Ingresar Contraseña</label>
     </div>
 
@@ -115,9 +115,7 @@
     </div>
     <button class="w-100 btn btn-outline-danger" type="submit">Iniciar Sesión</button>
     <hr class="my-10">
-    <a href={{reg2}} class='w-100 btn btn-danger'>Recuperar Contraseña</a>
-
-
+    <a href="/recupera" class='w-100 btn btn-danger'>Recuperar Contraseña</a>
 
   </form>
 </main>

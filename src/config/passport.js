@@ -1,3 +1,4 @@
+const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../modelos/datos');
@@ -16,11 +17,11 @@ module.exports = function (passport){
 
     //registro de usuario
     passport.use('local-signup', new LocalStrategy({
-        usernameField: 'correo',
+        usernameField: 'email',
         passwordField: 'password',
         passReqToCallback: true
     },
-    function (req, email, password, done) {
+    function (req, email, password, done) { //Se definen los otros parametros que se recibirán
         User.findOne({'local.email': email}, function(err, user){
             if (err) {return done(err);}
             if (user){
@@ -39,7 +40,7 @@ module.exports = function (passport){
 
     //inicio de sesión de usuario
     passport.use('local-login', new LocalStrategy({
-        usernameField: 'correo',
+        usernameField: 'email',
         passwordField: 'password',
         passReqToCallback: true
     },
