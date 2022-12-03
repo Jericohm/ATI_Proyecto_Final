@@ -2,6 +2,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../modelos/datos');
+const Poke = require('../modelos/datosPoke');
+
 
 module.exports = function (passport){
     
@@ -56,5 +58,44 @@ module.exports = function (passport){
             return done(null, user);
         })
     }));
+
+    /* BORRAR
+    //Validaciones de Información de Pokemon
+    passport.serializeUser(function (user, done){
+        done(null, poke.id);                        // A LO MEJOR Y REQUIREO CAMBIAR EL NOMBRE user
+    })
+
+    passport.deserializeUser( function (id, done){
+        Poke.findById(id, function(err, poke){
+            done(err, poke);
+        });
+    });
+
+    //registro de pokemon
+    passport.use('local-registro', new LocalStrategy({
+        usernameField: 'nombre',
+        passReqToCallback: true
+    },
+    function (req, nombre, ps, atq, atq_esp, def, def_esp, vel/*, tipo, natura, evento, codigo, promo, done) { //Se definen los otros parametros que se recibirán
+        Poke.findOne({'local.nombre': nombre}, function(err, poke){
+            if (err) {return done(err);}
+            if (poke){
+                return done(null, false, req.flash('signupMessage', 'Este Pokemon ya existe'));
+            }else{
+                var newPoke = new Poke();
+                newPoke.local.nombre = nombre;
+                newPoke.local.ps = ps;
+                newPoke.local.atq = atq;
+                newPoke.local.atq_esp = atq_esp;
+                newPoke.local.def = def;
+                newPoke.local.def_esp = def_esp;
+                newPoke.local.vel = vel;
+                newPoke.save(function(err){
+                    if (err) {throw err;}
+                    return done(null, newPoke);
+                })
+            }
+        })
+    })); FIN TESTING*/
 
 }
