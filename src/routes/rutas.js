@@ -12,7 +12,17 @@ module.exports = (app, passport) => {
     });
   });
 
-  //app.post('/inicioSesion', passport.authenticate(''));
+    /*                   
+  app.post('/inicioSesion', (req, res) => {
+    // FUSIONAR LAS 2
+    console.log(req.body);
+  });*/
+
+  app.post('/inicioSesion', passport.authenticate('local-login',{
+    successRedirect: '/profile',
+    failureRedirect: '/inicioSesion',
+    failureFlash: true,
+  }))
 
   app.get('/registro', function(req, res) {
     res.render('Registro', {
@@ -25,21 +35,26 @@ module.exports = (app, passport) => {
     failureRedirect: '/registro',
     failureFlash: true,
   }));
-                              //PRUEBAS
-  /*                     
-  app.post('/registro', (req, res, next) => {
-    // FUSIONAR LAS 2
-    console.log(req.body);
-  });*/  
 
-  app.get('/profile', (req, res) => {
+  app.get('/profile', isLoggedIn, (req, res) => {
     res.render('profile', {
       user: req.user
     });
+  });
+
+  app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
   });
 
   app.get('/recupera', function(req, res) {
     res.render('RecuperarContra');
   });
 
+  function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+      return next();
+    }
+    return res.redirect('/');
+  };
 };
