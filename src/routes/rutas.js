@@ -19,25 +19,18 @@ module.exports = (app, passport) => {
       message: req.flash('signupMessage')
     });
   });
-  /*
+  
   app.post('/registro', passport.authenticate('local-signup',{
     successRedirect: '/profile',
     failureRedirect: '/registro',
     failureFlash: true,
-  }));*/
+  }));
                               //PRUEBAS
-                              
+  /*                     
   app.post('/registro', (req, res, next) => {
     // FUSIONAR LAS 2
     console.log(req.body);
-  });
-  /*
-  router.post('/', (req, res, next)=>{
-    var juego = solicitaUsuario({
-      password: req.body.password,
-      correo: req.body.correo,
-    });*/
-                                // FIN DE PRUEBAS
+  });*/  
 
   app.get('/profile', (req, res) => {
     res.render('profile', {
