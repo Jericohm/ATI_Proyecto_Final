@@ -10,6 +10,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var ejs = require('ejs');
 
 // ANTIGUA CONEXIÓN A MONGODB
 mongoose.connect('mongodb+srv://jericohm:12345@cluster1.zhnf0.mongodb.net/database?retryWrites=true&w=majority',{
@@ -19,31 +20,14 @@ mongoose.connect('mongodb+srv://jericohm:12345@cluster1.zhnf0.mongodb.net/databa
 });
 
 const { url } = require('./config/database');
-/*
-mongoose.connect(url,{
-  //useMongoClient: true
-});*/
 
-//app.set('port', process.env.PORT || 3000);
-
-require('./config/passport')(passport); // Se solicita lo necesario para los login
-
-/*
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var dockerRouter = require('./routes/docker');
-var datosRouter = require('./routes/datos');
-var infoUser = require('./routes/infoUsers');
-var registroUsuario = require('./routes/registro');
-var iniciarSesion = require('./routes/iniciarSesion');
-var recuperaContra = require('./routes/recuperar');
-*/
-
+// Se solicita lo necesario para los login
+require('./config/passport')(passport); 
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
