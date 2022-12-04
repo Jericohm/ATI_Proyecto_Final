@@ -4,15 +4,16 @@ const bcrypt = require('bcrypt-nodejs');
 var Schema = mongoose.Schema;
 
 var GameSchema = Schema({
-    id: Number,
+    id: String,
     nombre: String,
     ps: Number,
     atq: Number,
-    atq_esp: Number, 
+    atq_esp: Number,
     def: Number,
     def_esp: Number,
     vel: Number,
     tipo: String,
+    tipo2: String,
     natura: String,
     evento: Number,
     codigo: Number,
@@ -28,7 +29,7 @@ const usuarioSchema = new mongoose.Schema({
     password: String,
     email: String
     //admin: Number
-  } 
+  }
 });
 
 //const solicitaUsuario = mongoose.model('usuario',usuarioSchema); // Podría dar problemas
@@ -48,4 +49,3 @@ module.exports = {
 }*/
 
 module.exports = mongoose.model('informacion',usuarioSchema);
-

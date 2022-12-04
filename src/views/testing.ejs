@@ -64,7 +64,7 @@
 </div>
 </header>
 </main>
-<main class="form-signin w-100 m-auto">
+<main class="form-signin w-100 m-auto">    
 
   <header class="text-center">
     <h1>Perfil</h1>
@@ -72,15 +72,9 @@
     <div class="container">
         <div class="card">
             <p>
-<<<<<<<< HEAD:src/views/viewPokemon.ejs
-                <strong>id</strong>: {{user._id}} <br>
-                <strong>nombre</strong>: {{user.local.nombre}} <br>
-                <strong>Puntos de Salud</strong>: {{user.local.ps}} <br>
-========
-                <strong>id</strong>: <%= user._id %><br> <!--TEST-->
-                <strong>email</strong>: <%= user.local.email %> <br>
-                <strong>password</strong>: <%= user.local.password %> <br>
->>>>>>>> c244cd099192d4a7e14e49267ae225f06feda883:src/views/profile.ejs
+              <% listaPoke.forEach(poke => { %>
+                <p><%= poke.nombre %></p>
+              <% }) %>
             </p>
         </div>
     </div>
