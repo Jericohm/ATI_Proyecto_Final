@@ -3,11 +3,12 @@ var express = require('express');
 // const Pokemon = require('../modelos/datosPoke');
 
 var gameSchema = new mongoose.Schema({
-  
+
   nombre: String, // FALTA AGREGAR EL ID DEL POKE, NO LO PONGO PARA NO CAUSAR PROBLEMAS
+  idp:String,
   ps: Number,
   atq: Number,
-  atq_esp: Number, 
+  atq_esp: Number,
   def: Number,
   def_esp: Number,
   vel: Number,
@@ -15,21 +16,21 @@ var gameSchema = new mongoose.Schema({
   natura: String,
   evento: Number,
   codigo: Number,
-  promo: Number   
-  
+  promo: Number
+
 });
 
 const Pokemon = mongoose.model('informacions',gameSchema);
 
 module.exports = (app, passport) => {
-  
-  app.get('/', function(req, res) {
-    res.render('menu');
+
+  app.get('/', function(req, res, next) {
+    res.render('menu',{style:'headers.css', img:'logoPKB.png'});
   });
-  
+
   //Manejo de inicio de sesión
   app.get('/inicioSesion', function(req, res) {
-    res.render('inicia_sesion', {
+    res.render('inicia_sesion.ejs', {
       message: req.flash('loginMessage')
     });
   });
@@ -46,7 +47,7 @@ module.exports = (app, passport) => {
       message: req.flash('signupMessage')
     });
   });
-  
+
   //Registro de usuarios nuevos
   app.post('/registro', passport.authenticate('local-signup',{
     successRedirect: '/profile',
@@ -66,7 +67,7 @@ module.exports = (app, passport) => {
     req.logout();
     res.redirect('/');
   });
-  
+
   //Manejo de Recuperación de contraseña (Aún no funciona)
   app.get('/recupera', function(req, res) {
     res.render('RecuperarContra');
@@ -118,16 +119,27 @@ module.exports = (app, passport) => {
   app.get('/vistaPokemon', function(req, res) {
     res.render('viewPokemon');
   });
-  
-  
+
+
 
 /* //Linea de código para validar output de FORM (NO BORRAR)
   app.post('/RegistrarPoke', (req, res) => {
     // FUSIONAR LAS 2
     console.log(req.body);
   });*/
-  
+
   app.get('/tablasPokemon', (req, res) => {
+    Pokemon.find({}, function(err, poke) {
+      if(err){
+        condole.log(err);
+      }else{
+        res.render('testing', {
+          listaPoke: poke
+        })
+      }})
+  })
+
+  app.get('/Home-Tabla', (req, res) => {
     Pokemon.find({}, function(err, poke) {
       if(err){
         condole.log(err);
@@ -145,4 +157,3 @@ module.exports = (app, passport) => {
 
 
 };
-

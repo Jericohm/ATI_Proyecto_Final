@@ -14,7 +14,7 @@
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="navbar-top-fixed.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
-    <link href="..\VentanasUsuario\headers.css" rel="stylesheet">
+    <link href="headers.css" rel="stylesheet">
   </head>
   <body class="text-center">
 <main>
@@ -22,10 +22,10 @@
 <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
   <div class="dropdown">
     <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="..\CSSUsuarios\logoPKB.png" alt="" width="50">
+      <img src="logoPKB.png" alt="" width="50">
     </a>
     <ul class="dropdown-menu text-small shadow">
-      <li><a class="dropdown-item active" href="#" aria-current="page">Home</a></li>
+      <li><a class="dropdown-item active" href="/" aria-current="page">Home</a></li>
       <li><a class="dropdown-item" href="#">Tipos</a>
         <ul>
           <li><a class="dropdown-item" href="#">Electrico</a>
@@ -81,10 +81,12 @@
         <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
       </a>
       <ul class="dropdown-menu text-small shadow">
-        <li><a class="dropdown-item" href="#">Iniciar Sesion</a></li>
-        <li><a class="dropdown-item" href="#">Registarse</a></li>
+        <li><a class="dropdown-item" href="/inicioSesion">Iniciar Sesion</a></li>
+        <li><a class="dropdown-item" href="/Registro">Registarse</a></li>
+        <li><a class="dropdown-item" href="/RegistrarPoke">Registrar Pokemon</a></li>
+        <li><a class="dropdown-item" href="/tablasPokemon">Mostrar pokes</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Salir</a></li>
+        <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
       </ul>
     </div>
   </div>
@@ -95,7 +97,7 @@
 <div class="container-fluid">
  <main>
    <div class="py-0">
-     <img class="d-block mx-auto mb-4 my-8 " src="../CSSUsuarios/PikaS.png" alt="" width="150" height="150">
+     <img class="mb-6" src="PikaS.png" alt="" >
    </div>
 
      <div class="form-signin w-100 m-auto">
@@ -143,9 +145,6 @@
              <input type="number" class="form-control" aria-label="Sizing example input" name="vel" id="vel"
              aria-describedby="inputGroup-sizing-sm">
            </div>
-
-
-<!--
              <label for="country" class="form-label">Tipo</label>
              <select class="form-select" id="country" required>
                <option value="">Fuego</option>
@@ -212,7 +211,7 @@
            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
            <label class="form-check-label" for="flexSwitchCheckDefault">Promoción</label>
          </div>
-         -->
+
          <hr class="my-4">
          <button class="w-100 btn btn-primary btn-lg" type="submit">Registrar Pokemon</button>
           <hr class="my-10">

@@ -29,7 +29,7 @@
       <img src="logoPKB.png" alt="" width="50">
     </a>
     <ul class="dropdown-menu text-small shadow">
-      <li><a class="dropdown-item active" href="/" aria-current="page">Home</a></li>
+      <li><a class="dropdown-item active" href="#" aria-current="page">Home</a></li>
       <li><a class="dropdown-item" href="#">Tipos</a>
         <ul>
           <li><a class="dropdown-item" href="#">Electrico</a>
@@ -86,35 +86,97 @@
       </a>
       <ul class="dropdown-menu text-small shadow">
         <li><a class="dropdown-item" href="/inicioSesion">Iniciar Sesion</a></li>
-        <li><a class="dropdown-item" href="/Registro">Registarse</a></li>
-        <li><a class="dropdown-item" href="/RegistrarPoke">Registrar Pokemon</a></li>
-        <li><a class="dropdown-item" href="/tablasPokemon">Mostrar pokes</a></li>
+        <li><a class="dropdown-item" href="/Registro.hbs">Registarse</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
+        <li><a class="dropdown-item" href="#">Salir</a></li>
       </ul>
     </div>
   </div>
 </div>
 </header>
 </main>
-<main class="form-signin w-100 m-auto">
 
-  <form>
-      <img class="mb-5" src="PrinPoke.png" alt="" width="200" height="200">
-    <h1 class="h3 mb-6 fw-normal">Recuperar Contraseña</h1>
 
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Ingresar Correo</label>
+<div class="container rounded mt-5 bg-white p-md-5">
+    <div class="h2 font-weight-bold">Pokemon</div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Número</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Nombre original</th>
+                </tr>
+            </thead>
+            <tbody>
+              <%Pokelist.forEach(Pokemon => {%>
+                  <p><%= poke.nombre%></p>
+                  <tr class="bg-blue">
+                      <td class="pt-2"> <img src="001-f.png" class="rounded-circle" alt="">
+                          <div class="pl-lg-5 pl-md-3 pl-1 name">Bulbasaur</div>
+                      </td>
+                      <td class="pt-3 mt-1"><%=poke.nombre></td>
+                      <td class="pt-3"><%=poke.tipo></td>
+                      <td class="pt-3">フ<%=poke.natura></td>
+                      <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
+                      <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
+                  </tr>
+
+              <%})%>
+
+              <tr class="bg-blue">
+                  <td class="pt-2"> <img src="001-f.png" class="rounded-circle" alt="">
+                      <div class="pl-lg-5 pl-md-3 pl-1 name">Bulbasaur</div>
+                  </td>
+                  <td class="pt-3 mt-1">001</td>
+                  <td class="pt-3">Bulbasaur</td>
+                  <td class="pt-3">フシギダネ Fushigidane</td>
+                  <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
+                  <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
+              </tr>
+                <tr id="spacing-row">
+                    <td></td>
+                </tr>
+                <tr class="bg-blue">
+                    <td class="pt-2"> <img src="002-f.png" class="rounded-circle" alt="">
+                        <div class="pl-lg-5 pl-md-3 pl-1 name">Ivysaur</div>
+                    </td>
+                    <td class="pt-3 mt-1">002</td>
+                    <td class="pt-3">Ivysaur </td>
+                    <td class="pt-3">フシギソウ Fushigisou</td>
+                    <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
+                    <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
+                </tr>
+                <tr id="spacing-row">
+                    <td></td>
+                </tr>
+                <tr class="bg-blue">
+                    <td class="pt-2"> <img src="003-f.png" class="rounded-circle" alt="">
+                        <div class="pl-lg-5 pl-md-3 pl-1 name">Venusaur </div>
+                    </td>
+                    <td class="pt-3 mt-1">003</td>
+                    <td class="pt-3">Venusaur </td>
+                    <td class="pt-3">フシギバナ Fushigibana</td>
+                    <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
+                    <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
+                </tr>
+                <tr id="spacing-row">
+                    <td></td>
+                </tr>
+                <tr class="bg-blue">
+                    <td class="pt-2"> <img src="004-f.png" class="rounded-circle" alt="">
+                        <div class="pl-lg-5 pl-md-3 pl-1 name">Charmander </div>
+                    </td>
+                    <td class="pt-3 mt-1">004</td>
+                    <td class="pt-3">Charmander </td>
+                    <td class="pt-3">ヒトカゲ Hitokage</td>
+                    <td class="pt-3"><span class="fa fa-minus pl-3"></span></td>
+                    <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-
-    <div class="checkbox mb-3">
-
-    </div>
-    <button class="w-100 btn btn-outline-danger" type="submit">Recuperar Contraseña</button>
-  </form>
-</main>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   </body>
 </html>

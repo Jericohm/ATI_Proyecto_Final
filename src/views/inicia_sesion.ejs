@@ -29,7 +29,7 @@
       <img src="logoPKB.png" alt="" width="50">
     </a>
     <ul class="dropdown-menu text-small shadow">
-      <li><a class="dropdown-item active" href="#" aria-current="page">Home</a></li>
+      <li><a class="dropdown-item active" href="/" aria-current="page">Home</a></li>
       <li><a class="dropdown-item" href="#">Tipos</a>
         <ul>
           <li><a class="dropdown-item" href="#">Electrico</a>
@@ -87,6 +87,8 @@
       <ul class="dropdown-menu text-small shadow">
         <li><a class="dropdown-item" href="/inicioSesion">Iniciar Sesion</a></li>
         <li><a class="dropdown-item" href="/Registro">Registarse</a></li>
+        <li><a class="dropdown-item" href="/RegistrarPoke">Registrar Pokemon</a></li>
+        <li><a class="dropdown-item" href="/tablasPokemon">Mostrar pokes</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
       </ul>
@@ -98,7 +100,7 @@
 <main class="form-signin w-100 m-auto">
 
   <form action="/inicioSesion" method="post">
-    <img class="mb-4" src="PrinPoke.png" alt="" width="200" height="200">
+    <img class="mb-5" src="PrinPoke.png" alt="" width="200" height="200">
     <h1 class="h3 mb-3 fw-normal">Iniciar Sesion</h1>
 
     <div class="form-floating">
@@ -109,12 +111,8 @@
       <input type="password" class="form-control" id="password" name="password" placeholder="password">
       <label for="floatingPassword">Ingresar Contraseña</label>
     </div>
-
-    <div class="checkbox mb-3">
-
-    <div class="checkbox mb-3">
+    <hr style="border:5px;">
       <button class="w-100 btn btn-outline-danger" type="submit">Iniciar Sesión</button>
-    </div>
     <!--<a href="/recupera" class='w-100 btn btn-danger'>Recuperar Contraseña</a>-->
 
   </form>

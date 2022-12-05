@@ -11,6 +11,7 @@ var flash = require('connect-flash');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var ejs = require('ejs');
+var hbs = require('hbs');
 
 // ANTIGUA CONEXIÓN A MONGODB
 mongoose.connect('mongodb+srv://jericohm:12345@cluster1.zhnf0.mongodb.net/database?retryWrites=true&w=majority',{
@@ -19,10 +20,12 @@ mongoose.connect('mongodb+srv://jericohm:12345@cluster1.zhnf0.mongodb.net/databa
   console.log("Conectado a MongoDB")
 });
 
+
+
 const { url } = require('./config/database');
 
 // Se solicita lo necesario para los login
-require('./config/passport')(passport); 
+require('./config/passport')(passport);
 
 
 // view engine setup
@@ -48,7 +51,7 @@ require('./routes/rutas')(app, passport);
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 
-/*
+app.use(express.static(__dirname + '/public/css'));/*
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/docker',dockerRouter);

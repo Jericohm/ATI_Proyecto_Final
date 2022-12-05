@@ -16,7 +16,7 @@
     <style>
     </style>
     <!-- Custom styles for this template -->
-    <link href="headers.css" rel="stylesheet">
+    <link href="/headers.css" rel="stylesheet">
   </head>
 
   <body class="text-center">
@@ -64,20 +64,37 @@
 </div>
 </header>
 </main>
-<main class="form-signin w-100 m-auto">    
+<main class="form-signin w-100 m-auto">
 
   <header class="text-center">
     <h1>Perfil</h1>
     <hr>
-    <div class="container">
-        <div class="card">
-            <p>
-              <% listaPoke.forEach(poke => { %>
-                <p><%= poke.nombre %></p>
-              <% }) %>
-            </p>
-        </div>
-    </div>
+    <table>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Naturaleza</th>
+      </tr>
+      <div class="container">
+          <div class="card">
+              <tbody>
+                <% listaPoke.forEach(poke => { %>
+                  <tr>
+                    
+                    <td><img src=<%= poke.idp %>.png alt=""></td>
+                    <td><%= poke.idp %></td>
+                    <td><%= poke.nombre %></td>
+                    <td><%= poke.tipo %></td>
+                    <td><%= poke.natura %></td>
+
+                  </tr>
+                <% }) %>
+              </tbody>
+          </div>
+      </div>
+    </table>
+
   </header>
 
 </main>
