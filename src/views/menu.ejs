@@ -20,6 +20,7 @@
   <body class="text-center">
 <main>
   <header class="py-3 mb-3 border-bottom">
+    
 
 <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
   <div class="dropdown">
@@ -29,7 +30,7 @@
     </a>
     <ul class="dropdown-menu text-small shadow">
       <li><a class="dropdown-item active" href="#" aria-current="page">Home</a></li>
-      <!--<li><a class="dropdown-item" href="#">Tipos</a>
+      <!--<li><a class="dropdown-item" href="#">Tipos</a> 
         <ul>
           <li><a class="dropdown-item" href="#">Electrico</a>
           <li><a class="dropdown-item" href="#">Acero</a>
@@ -73,6 +74,7 @@
       <li><hr class="dropdown-divider"></li>-->
     </ul>
   </div>
+  
 
   <div class="d-flex align-items-center">
     <form class="w-100 me-3" role="search">
@@ -104,6 +106,14 @@
 </header>
 </main>
 <main class="form-signin w-100 m-auto">
+
+  <% if(user){%>  
+  <h1>Bienvenido: <%= user.local.nombre%></h1>
+  <hr>
+  <h5>Ahora que eres parte de nuestra comunidad explora algunos de los Pokemon existentes
+    y sientete libre de agregar un par más a nuestra increible colección.
+  </h5>
+  <%}%>
 
 <div class="d-grid gap-2 col-22 mx-auto">
   <% if(!user){%>  

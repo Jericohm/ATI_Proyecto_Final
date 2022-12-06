@@ -28,6 +28,7 @@ module.exports = function (passport){
                 return done(null, false, req.flash('signupMessage', 'El correo ya está en uso.'));
             }else{
                 var newUser = new User();
+                newUser.local.nombre = req.body.nombre;
                 newUser.local.email = email;
                 newUser.local.password = newUser.generateHash(password);
                 newUser.save(function(err){
