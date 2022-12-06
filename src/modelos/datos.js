@@ -48,4 +48,4 @@ module.exports = {
   solicitaUsuario: solicitaUsuario
 }*/
 
-module.exports = mongoose.model('informacion',usuarioSchema);
+module.exports = mongoose.model('usuarios',usuarioSchema);

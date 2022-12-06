@@ -4,8 +4,8 @@ var express = require('express');
 
 var gameSchema = new mongoose.Schema({
 
+  id:String,
   nombre: String, // FALTA AGREGAR EL ID DEL POKE, NO LO PONGO PARA NO CAUSAR PROBLEMAS
-  idp:String,
   ps: Number,
   atq: Number,
   atq_esp: Number,
@@ -14,9 +14,9 @@ var gameSchema = new mongoose.Schema({
   vel: Number,
   tipo: String,
   natura: String,
-  evento: Number,
-  codigo: Number,
-  promo: Number
+  evento: String,
+  codigo: String,
+  promo: String
 
 });
 
@@ -93,28 +93,50 @@ module.exports = (app, passport) => {
   }));*/
 
 
-  /*Metodo Post (Está bien)*/
-  app.post('/RegistraPoke', (req, res, next)=>{
-    var poke = solicitaInfo({
-    nombre: req.body.nombre,
-    ps: req.body.ps,
-    aqt: req.body.atq,
-    atq_esp: req.body.atq_esp,
-    def: req.body.def,
-    def_esp: req.body.def_esp,
-    vel: req.body.vel
-  })
-  //res.redirect('/vistaPokemon')
+  /*Metodo Post (Está bien)*/ 
+  app.post('/RegistrarPoke', async (req, res, next)=>{
+    
+    console.log(req.body)
+    
+    //let informacions = new Pokemon()
+      var dato = Pokemon({
+        id: req.body.id,
+        nombre: req.body.nombre,
+        ps: req.body.ps,
+        atq: req.body.atq,
+        atq_esp: req.body.atq_esp,
+        def: req.body.def,
+        def_esp: req.body.def_esp,
+        vel: req.body.vel,
+        tipo: req.body.tipo,
+        evento: req.body.evento,
+        codigo: req.body.codigo,
+        promo: req.body.promo
+      })
+  
+      dato.save((err,data)=>{
+        if(err){
+          res.json({'error':"Error al insertar"});
+        }else{
+          res.status(200).json(data);
+        }
+      })
+      //res.redirect('/RegistrarPoke')
+    
+    
+      //res.redirect('/menu') // vistaPokemon
 });
 
+  
+
+  //Linea de código para validar output de FORM (NO BORRAR)
+  /*
+  app.post('/RegistrarPoke', (req, res) => {
+    // FUSIONAR LAS 2
+    console.log(req.body);
+  });*/
                                       //Existe un problema al implementar el save
-  /*poke.save((err,data)=>{
-  if(err){
-    res.json({'error':"Error al insertar"});
-  }else{
-    res.status(200).json(data);
-  }
-});*/
+  
 
   app.get('/vistaPokemon', function(req, res) {
     res.render('viewPokemon');
@@ -122,16 +144,12 @@ module.exports = (app, passport) => {
 
 
 
-/* //Linea de código para validar output de FORM (NO BORRAR)
-  app.post('/RegistrarPoke', (req, res) => {
-    // FUSIONAR LAS 2
-    console.log(req.body);
-  });*/
+
 
   app.get('/tablasPokemon', (req, res) => {
     Pokemon.find({}, function(err, poke) {
       if(err){
-        condole.log(err);
+        console.log(err);
       }else{
         res.render('testing', {
           listaPoke: poke
@@ -142,7 +160,7 @@ module.exports = (app, passport) => {
   app.get('/Home-Tabla', (req, res) => {
     Pokemon.find({}, function(err, poke) {
       if(err){
-        condole.log(err);
+        console.log(err);
       }else{
         res.render('testing', {
           listaPoke: poke
