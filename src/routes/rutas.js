@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var express = require('express');
+const router = express.Router();
 // const Pokemon = require('../modelos/datosPoke');
 
 var gameSchema = new mongoose.Schema({
@@ -16,7 +17,9 @@ var gameSchema = new mongoose.Schema({
   natura: String,
   evento: String,
   codigo: String,
-  promo: String
+  promo: String,
+  idp : String,
+  tipo2 : String
 
 });
 
@@ -73,6 +76,10 @@ module.exports = (app, passport) => {
     res.render('RecuperarContra');
   });
 
+  app.get('/PerfilPokemon', function(req, res) {
+    res.render('PerfilPoke');
+  });
+
   //Función de validación de usuario activo
   function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
@@ -93,11 +100,11 @@ module.exports = (app, passport) => {
   }));*/
 
 
-  /*Metodo Post (Está bien)*/ 
+  /*Metodo Post (Está bien)*/
   app.post('/RegistrarPoke', async (req, res, next)=>{
-    
+
     console.log(req.body)
-    
+
     //let informacions = new Pokemon()
       var dato = Pokemon({
         id: req.body.id,
@@ -113,7 +120,7 @@ module.exports = (app, passport) => {
         codigo: req.body.codigo,
         promo: req.body.promo
       })
-  
+
       dato.save((err,data)=>{
         if(err){
           res.json({'error':"Error al insertar"});
@@ -122,12 +129,12 @@ module.exports = (app, passport) => {
         }
       })
       //res.redirect('/RegistrarPoke')
-    
-    
+
+
       //res.redirect('/menu') // vistaPokemon
 });
 
-  
+
 
   //Linea de código para validar output de FORM (NO BORRAR)
   /*
@@ -136,15 +143,11 @@ module.exports = (app, passport) => {
     console.log(req.body);
   });*/
                                       //Existe un problema al implementar el save
-  
+
 
   app.get('/vistaPokemon', function(req, res) {
     res.render('viewPokemon');
   });
-
-
-
-
 
   app.get('/tablasPokemon', (req, res) => {
     Pokemon.find({}, function(err, poke) {
@@ -155,7 +158,9 @@ module.exports = (app, passport) => {
           listaPoke: poke
         })
       }})
-  })
+  });
+
+
 
   app.get('/Home-Tabla', (req, res) => {
     Pokemon.find({}, function(err, poke) {
