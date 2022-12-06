@@ -27,14 +27,19 @@ const Pokemon = mongoose.model('informacions',gameSchema);
 
 module.exports = (app, passport) => {
 
-  app.get('/', function(req, res, next) {
-    res.render('menu',{style:'headers.css', img:'logoPKB.png'});
+  app.get('/', function(req, res, next) { //Rutas Listas (Falta mejor vista)
+    res.render('menu',{
+      style:'headers.css', 
+      img:'logoPKB.png',
+      user: req.user
+    });
   });
 
   //Manejo de inicio de sesión
   app.get('/inicioSesion', function(req, res) {
     res.render('inicia_sesion.ejs', {
-      message: req.flash('loginMessage')
+      message: req.flash('loginMessage'),
+      user: req.user
     });
   });
 
@@ -47,7 +52,8 @@ module.exports = (app, passport) => {
   //Manejo de Registro de nuevo usuario
   app.get('/registro', function(req, res) {
     res.render('Registro', {
-      message: req.flash('signupMessage')
+      message: req.flash('signupMessage'),
+      user: req.user
     });
   });
 
@@ -88,8 +94,10 @@ module.exports = (app, passport) => {
     return res.redirect('/');
   };
 
-  app.get('/RegistrarPoke', function(req, res) {
-    res.render('RegistrarPoke');
+  app.get('/RegistrarPoke', isLoggedIn, function(req, res) { //Necesita una validación
+    res.render('RegistrarPoke', {
+      user: req.user
+    });
   });
 
   /*
@@ -100,7 +108,7 @@ module.exports = (app, passport) => {
   }));*/
 
 
-  /*Metodo Post (Está bien)*/
+  /*Metodo Post*/
   app.post('/RegistrarPoke', async (req, res, next)=>{
 
     console.log(req.body)
@@ -128,12 +136,18 @@ module.exports = (app, passport) => {
           res.status(200).json(data);
         }
       })
-      //res.redirect('/RegistrarPoke')
-
-
-      //res.redirect('/menu') // vistaPokemon
 });
 
+// Borrar, no está implementado
+app.delete('/:_id', function(req, res, next) {
+  solicitaUsuario.deleteOne({'id':req.params._id}, (err)=>{
+    if(err){
+      res.json({'Error':'No existe'});
+    }else{
+      res.json({'Estatus':'Borrado'});
+    }
+  });
+});
 
 
   //Linea de código para validar output de FORM (NO BORRAR)
@@ -155,7 +169,8 @@ module.exports = (app, passport) => {
         console.log(err);
       }else{
         res.render('testing', {
-          listaPoke: poke
+          listaPoke: poke,
+          user: req.user
         })
       }})
   });
@@ -168,7 +183,8 @@ module.exports = (app, passport) => {
         console.log(err);
       }else{
         res.render('testing', {
-          listaPoke: poke
+          listaPoke: poke,
+          user: req.user
         })
       }})
   })

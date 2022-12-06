@@ -31,7 +31,7 @@
     </a>
     <ul class="dropdown-menu text-small shadow">
       <li><a class="dropdown-item active" href="/" aria-current="page">Home</a></li>
-      <li><a class="dropdown-item" href="#">Tipos</a>
+      <!--<li><a class="dropdown-item" href="#">Tipos</a>
         <ul>
           <li><a class="dropdown-item" href="#">Electrico</a>
         </ul>
@@ -41,7 +41,7 @@
           <li><a class="dropdown-item" href="#">Afable</a>
         </ul>
       </li>
-      <li><hr class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>-->
     </ul>
   </div>
 
@@ -55,10 +55,21 @@
         <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
       </a>
       <ul class="dropdown-menu text-small shadow">
+        <!--Modulo sensible a Inicio de Sesión-->
+        <% if(user){%>        
+          <li><a class="dropdown-item" href="/profile">Perfil</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="/RegistrarPoke">Registrar Pokemon</a></li>
+          <!--<li><hr class="dropdown-divider"></li>-->
+          <%} else {%>
         <li><a class="dropdown-item" href="/inicioSesion">Iniciar Sesion</a></li>
-        <li><a class="dropdown-item" href="/Registro">Registarse</a></li>
-        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/Registro">Registrarse</a></li>        
+          <% }%>
+        <!--<li><a class="dropdown-item" href="/tablasPokemon">Mostrar Pokemon</a></li>-->
+        <% if(user){%>  
+        <li><hr class="dropdown-divider"></li>        
         <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
+        <% } %>
       </ul>
     </div>
   </div>
@@ -68,7 +79,7 @@
 <main class="form-signin w-100 m-auto">
 
   <header class="text-center">
-    <h1>Perfil</h1>
+    <h1>Lista de Pokemon</h1>
     <hr>
     <table>
       <tr>
@@ -86,7 +97,9 @@
                   <tr>
                     <td><img src=<%= poke.idp %>.png alt=""></td>
                     <td><%= poke.idp %></td>
-                    <td><button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal"><%= poke.nombre %></button></td>
+                    <td><button type="submit" class="btn btn-link" data-bs-toggle="modal" 
+                      data-bs-target="#exampleModal-<%= poke._id %>"><%= poke.nombre %></button></td>
+                      
                     <td><%= poke.tipo %></td>
                     <td><%= poke.tipo2 %></td>
                     <td><%= poke.natura %></td>
@@ -99,12 +112,15 @@
     </table>
   </header>
   <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
 </button>
+-->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--INICIO DE TESTEO-->
+<% listaPoke.forEach(poke => { %>
+<div class="modal fade" id="exampleModal-<%= poke._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -117,7 +133,7 @@
                 <div class="col-sm-4 bg-c-lite-green user-profile">
                     <div class="card-block text-center text-white">
                         <div class="m-b-25">
-                            <img src="001-f.png" class="img-radius" alt="User-Profile-Image", height="500px", width="500px">
+                            <img src=<%= poke.idp %>.png alt="" class="img-radius" alt="User-Profile-Image", height="500px", width="500px">
                         </div>
                         <h6 class="f-w-600"></h6>
                         <p></p>
@@ -125,32 +141,34 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="card-block">
-                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Datos</h6>
+                      
+                      
+                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600"><%= poke.nombre%></h6>
                         <h6 class="m-b-20 p-b-5 "> </h6>
                         <div class="row">
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">PS</p>
-                                <h6 class="text-muted f-w-400">86</h6>
+                                <h6 class="text-muted f-w-400"><%= poke.ps %></h6>
                             </div>
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">Velocidad</p>
-                                <h6 class="text-muted f-w-400">12</h6>
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">Defensa</p>
-                                <h6 class="text-muted f-w-400">12</h6>
+                                <h6 class="text-muted f-w-400"><%= poke.vel%></h6>
                             </div>
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">Ataque</p>
-                                <h6 class="text-muted f-w-400">12</h6>
+                                <h6 class="text-muted f-w-400"><%= poke.atq%></h6>
                             </div>
                             <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">Defensa Esp</p>
-                                <h6 class="text-muted f-w-400">12</h6>
+                                <p class="m-b-10 f-w-600">Defensa</p>
+                                <h6 class="text-muted f-w-400"><%= poke.def%></h6>
                             </div>
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">Ataque Esp</p>
-                                <h6 class="text-muted f-w-400">12</h6>
+                                <h6 class="text-muted f-w-400"><%= poke.atq_esp%></h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600">Defensa Esp</p>
+                                <h6 class="text-muted f-w-400"><%= poke.def_esp%></h6>
                             </div>
                         </div>
 
@@ -168,6 +186,7 @@
                                 <input type="checkbox"  disabled >Si
                             </div>
                         </div>
+                      
                     </div>
                 </div>
             </div>
@@ -179,6 +198,7 @@
     </div>
   </div>
 </div>
+<% }) %> <!--FIN DE TESTEO-->
 
 </main>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
