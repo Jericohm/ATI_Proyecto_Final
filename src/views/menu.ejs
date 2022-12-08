@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Signin Template · Bootstrap v5.2</title>
+    <title>Página Principal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
@@ -76,7 +76,7 @@
   </div>
   
 
-  <div class="d-flex align-items-center">
+  <div class="d-flex align-items-center">  
     <form class="w-100 me-3" role="search">
       <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
     </form>
@@ -107,22 +107,35 @@
 </main>
 <main class="form-signin w-100 m-auto">
 
+  <% if(!user){%> 
+  <h1>Bienvenido</h1>  
+  <hr>
+  <h5>Es tu momento de explorar nuestra amplia colección de Pokemon a tu antojo.</h5>
+  <h5>Para desbloquear más opciones no dudes en unirte a nuestra gran comunidad creando 
+    un perfil ahora mismo.
+  </h5>
+  <hr>
+  <%}%>
+
   <% if(user){%>  
   <h1>Bienvenido: <%= user.local.nombre%></h1>
   <hr>
   <h5>Ahora que eres parte de nuestra comunidad explora algunos de los Pokemon existentes
     y sientete libre de agregar un par más a nuestra increible colección.
   </h5>
+  <hr>
+  <button class="w-100 btn btn-outline-danger" type="button" onclick="location.href='/RegistrarPoke';">
+    Registrar Nuevo Pokemon</button>
   <%}%>
 
 <div class="d-grid gap-2 col-22 mx-auto">
   <% if(!user){%>  
-  <button class="w-100 btn btn-outline-danger" type="button" onclick="location.href='/Registro';">
-    Registrarse</button>
+    <button class="w-100 btn btn-outline-danger" type="button" onclick="location.href='/inicioSesion';">
+      Iniciar Sesión</button>
 
-  <button class="w-100 btn btn-outline-danger" type="button" onclick="location.href='/inicioSesion';">
-    Iniciar Sesión</button>
-
+    <button class="w-100 btn btn-outline-danger" type="button" onclick="location.href='/Registro';">
+      Registrarse</button>
+  
   <!--<button class="w-100 btn btn-outline-danger" type="button" onclick="location.href='/recupera';">
     Recuperar Contraseña</button>-->
   <% } %>
