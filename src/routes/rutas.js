@@ -29,7 +29,7 @@ module.exports = (app, passport) => {
 
   app.get('/', function(req, res, next) { //Rutas Listas (Falta mejor vista)
     res.render('menu',{
-      style:'headers.css', 
+      style:'headers.css',
       img:'logoPKB.png',
       user: req.user
     });
@@ -115,7 +115,7 @@ module.exports = (app, passport) => {
 
     //let informacions = new Pokemon()
       var dato = Pokemon({
-        id: req.body.id,
+        idp: req.body.id,
         nombre: req.body.nombre,
         ps: req.body.ps,
         atq: req.body.atq,
@@ -126,7 +126,8 @@ module.exports = (app, passport) => {
         tipo: req.body.tipo,
         evento: req.body.evento,
         codigo: req.body.codigo,
-        promo: req.body.promo
+        promo: req.body.promo,
+        natura: req.body.natura
       })
 
       dato.save((err,data)=>{

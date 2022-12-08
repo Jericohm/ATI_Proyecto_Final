@@ -57,14 +57,16 @@
 <main class="form-signin w-100 m-auto">
   <h1><%= user.local.nombre%></h1>
   <header class="text-center">
-    
+
     <hr>
     <div class="container">
         <div class="card">
             <p>
-                <strong>id</strong>: <%= user._id %><br> <!--TEST-->
-                <strong>email</strong>: <%= user.local.email %> <br>
-                <strong>password</strong>: <%= user.local.password %> <br>
+                <img class="mb-7" src="trainer.png" alt="">
+                <hr>
+                <strong>id</strong>:<%= user._id %><br> <!--TEST-->
+                <strong>email</strong>:<%= user.local.email %> <br>
+                <strong>password</strong>:<%= user.local.password %> <br>
             </p>
         </div>
     </div>
