@@ -82,6 +82,25 @@ module.exports = (app, passport) => {
     res.render('RecuperarContra');
   });
 
+
+  app.get('/eliminar', isLoggedIn, function(req, res) { //Necesita una validación
+    res.render('EliminarPoke', {
+      user: req.user
+    });
+  });
+
+  app.get('/tablaAdmin', (req, res) => {
+    Pokemon.find({}, function(err, poke) {
+      if(err){
+        console.log(err);
+      }else{
+        res.render('testingAdmin', {
+          listaPoke: poke,
+          user: req.user
+        })
+      }})
+  });
+
   app.get('/PerfilPokemon', function(req, res) {
     res.render('PerfilPoke');
   });
@@ -96,6 +115,12 @@ module.exports = (app, passport) => {
 
   app.get('/RegistrarPoke', isLoggedIn, function(req, res) { //Necesita una validación
     res.render('RegistrarPoke', {
+      user: req.user
+    });
+  });
+
+  app.get('/editarPoke', isLoggedIn, function(req, res) { //Necesita una validación
+    res.render('EditarPoke', {
       user: req.user
     });
   });
