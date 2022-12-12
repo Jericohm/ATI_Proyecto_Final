@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var express = require('express');
 const router = express.Router();
-// const Pokemon = require('../modelos/datosPoke');
+const {usuarios} = require('../modelos/datos');
 
 var gameSchema = new mongoose.Schema({
 
@@ -33,7 +33,7 @@ module.exports = (app, passport) => {
       img:'logoPKB.png',
       user: req.user
     });
-  });
+  });  
 
   //Manejo de inicio de sesión
   app.get('/inicioSesion', function(req, res) {
@@ -63,6 +63,21 @@ module.exports = (app, passport) => {
     failureRedirect: '/registro',
     failureFlash: true,
   }));
+  
+
+  /*app.post('/registro', function(res, req){
+    if(!user){
+      user.local.admin= "True";
+    }else{
+      user.local.admin= "False";
+    }
+    passport.authenticate('local-signup',{
+      successRedirect: '/profile',
+      failureRedirect: '/registro',
+      failureFlash: true,
+    })
+  }
+    );*/
 
   //Vista del usuario logeado
   app.get('/profile', isLoggedIn, (req, res) => {
@@ -175,10 +190,46 @@ app.delete('/:_id', function(req, res, next) {
   });
 });
 
+// Rutas para actualizar permisos
+app.get('/admin', isLoggedIn ,function(req, res, next) { //Rutas Listas (Falta mejor vista)
+  res.render('permisosAdmin',{
+    style:'headers.css',
+    img:'logoPKB.png',
+    user: req.user
+  });
+});
+
+app.post('/admin', passport.authenticate('local-admin',{
+  successRedirect: '/',
+  failureRedirect: '/admin',
+  failureFlash: true,
+}));
+
+
+  /*app.post('/admin', (req, res) => {
+    // FUSIONAR LAS 2
+    console.log(req.body);
+  });*/
+
+/*app.patch('/admin', function(req, res, next) {
+  //const body = req.body;
+  console.log(req.body);
+  usuarios.updateOne({'email':req.body.email},
+  body,
+  (err)=>{
+    if(err){
+      res.json({'Error':'No existe'});
+    }else{
+      res.json({'Estatus':'Actualizado'});
+      res.render('menu');
+    }
+  });
+});*/
+
 
   //Linea de código para validar output de FORM (NO BORRAR)
   /*
-  app.post('/RegistrarPoke', (req, res) => {
+  app.post('/admin', (req, res) => {
     // FUSIONAR LAS 2
     console.log(req.body);
   });*/

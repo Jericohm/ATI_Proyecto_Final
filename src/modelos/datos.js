@@ -9,7 +9,8 @@ const usuarioSchema = new mongoose.Schema({
   local:{
     nombre: String,
     password: String,
-    email: String
+    email: String,
+    admin: String // Permisos de admin
   }
 });
 

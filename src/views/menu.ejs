@@ -95,7 +95,8 @@
         <li><a class="dropdown-item" href="/inicioSesion">Iniciar Sesion</a></li>
         <li><a class="dropdown-item" href="/Registro">Registrarse</a></li>
         <li><hr class="dropdown-divider"></li>
-          <% }%>        
+          <% }%>          
+          
         <li><a class="dropdown-item" href="/tablasPokemon">Mostrar Pokemon</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
@@ -127,6 +128,16 @@
   <button class="w-100 btn btn-outline-danger" type="button" onclick="location.href='/RegistrarPoke';">
     Registrar Nuevo Pokemon</button>
   <%}%>
+
+  <!--TEST ADMIN-->
+  <%if(user){%>
+    <% if(String(user.local.admin) === "True"){%>
+      <hr>
+      <button class="w-100 btn btn-outline-danger" type="button" 
+      onclick="location.href='/admin';">
+        Registrar Nuevo Perfil Administrador</button>
+    <% }} %>
+  <!--TEST ADMIN-->
 
 <div class="d-grid gap-2 col-22 mx-auto">
   <% if(!user){%>  
