@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-  
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,10 +89,6 @@
         <th scope="col">Tipo(s)</th>
         <th scope="col"></th>
         <th scope="col">Naturaleza</th>
-        <%if(user){%>
-          <%if(String(user.local.admin) === "True"){%>
-            <th scope="col"> Editar </th>
-        <%}}%>
       </tr>
       <div class="container">
           <div class="card">
@@ -108,15 +103,6 @@
                     <td><%= poke.tipo %></td>
                     <td><%= poke.tipo2 %></td>
                     <td><%= poke.natura %></td>
-                    <%if(user){%>
-                      <%if(String(user.local.admin) === "True"){%>
-                        <td>
-                          <form action="/delete/<%= poke._id %>" method="POST" 
-                            class="d-inline">
-                            <button> Eliminar </button>
-                          </form>
-                        </td>
-                    <%}}%>
                   </tr>
                 <% }) %>
               </tbody>
@@ -218,3 +204,11 @@
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<!--TEST BORRAR-->
+<%if(user){%>
+    <%if(String(user.local.admin) === "True"){%>
+      <td><button method="DELETE" type="submit" class="btn btn-link" 
+        onclick="location.href='/:<%=poke._id%>';">Eliminar <%=poke._id%>
+      </button></td>
+  <%}}%>

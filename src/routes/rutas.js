@@ -3,6 +3,8 @@ var express = require('express');
 const router = express.Router();
 const {usuarios} = require('../modelos/datos');
 
+//app.get('//:id', users.deleteUser);
+
 var gameSchema = new mongoose.Schema({
 
   id:String,
@@ -63,21 +65,6 @@ module.exports = (app, passport) => {
     failureRedirect: '/registro',
     failureFlash: true,
   }));
-  
-
-  /*app.post('/registro', function(res, req){
-    if(!user){
-      user.local.admin= "True";
-    }else{
-      user.local.admin= "False";
-    }
-    passport.authenticate('local-signup',{
-      successRedirect: '/profile',
-      failureRedirect: '/registro',
-      failureFlash: true,
-    })
-  }
-    );*/
 
   //Vista del usuario logeado
   app.get('/profile', isLoggedIn, (req, res) => {
@@ -180,15 +167,32 @@ module.exports = (app, passport) => {
 });
 
 // Borrar, no está implementado
-app.delete('/:_id', function(req, res, next) {
-  solicitaUsuario.deleteOne({'id':req.params._id}, (err)=>{
+app.post('/delete/:_id', function(req, res, next) {
+  Pokemon.findOneAndRemove({'_id':req.params._id}, (err)=>{ //deleteOne
     if(err){
       res.json({'Error':'No existe'});
     }else{
       res.json({'Estatus':'Borrado'});
     }
   });
+  //res.render('permisosAdmin');
 });
+
+exports.deletePoke = function(req, res) {
+
+  Pokemon.findOneAndRemove({
+      _id: req.params._id
+  }, function(err, user) {
+
+      if (err) throw err;
+
+      console.log("Success");
+
+  });
+
+  res.redirect('/');
+
+};
 
 // Rutas para actualizar permisos
 app.get('/admin', isLoggedIn ,function(req, res, next) { //Rutas Listas (Falta mejor vista)
@@ -204,37 +208,6 @@ app.post('/admin', passport.authenticate('local-admin',{
   failureRedirect: '/admin',
   failureFlash: true,
 }));
-
-
-  /*app.post('/admin', (req, res) => {
-    // FUSIONAR LAS 2
-    console.log(req.body);
-  });*/
-
-/*app.patch('/admin', function(req, res, next) {
-  //const body = req.body;
-  console.log(req.body);
-  usuarios.updateOne({'email':req.body.email},
-  body,
-  (err)=>{
-    if(err){
-      res.json({'Error':'No existe'});
-    }else{
-      res.json({'Estatus':'Actualizado'});
-      res.render('menu');
-    }
-  });
-});*/
-
-
-  //Linea de código para validar output de FORM (NO BORRAR)
-  /*
-  app.post('/admin', (req, res) => {
-    // FUSIONAR LAS 2
-    console.log(req.body);
-  });*/
-                                      //Existe un problema al implementar el save
-
 
   app.get('/vistaPokemon', function(req, res) {
     res.render('viewPokemon');

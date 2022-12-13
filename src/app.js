@@ -83,5 +83,7 @@ app.listen(app.get('port'), () => {
   console.log('Servidor en puerto', app.get('port'));
 });*/
 
+//require('./routes/rutas');
+//app.use('/:id', './routes/rutas'.deletePoke);
 
 module.exports = app;
